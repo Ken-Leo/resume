@@ -1,5 +1,5 @@
-DEPS:= resume.cls fontawesome5/fontawesome5.sty
-SRCS:= resume-zh.tex resume-en.tex
+DEPS:= resume.cls fontawesome5/fontawesome5.sty resume-zh.bib resume-en.bib
+SRCS:= resume-zh.tex resume-en.tex 
 PDFS:= $(SRCS:%.tex=%.pdf)
 PDFCAT:= resume-zh+en.pdf
 
@@ -17,7 +17,7 @@ $(PDFCAT): $(PDFS)
 		$(PDFS)
 
 %.pdf: %.tex $(DEPS)
-	latexmk -xelatex $<
+	latexmk -xelatex -f $<
 
 dist: all
 	mkdir $(DISTDIR)
@@ -35,5 +35,6 @@ cleanall:
 	for f in $(SRCS); do \
 		latexmk -C $$f; \
 	done
+	rm *.bbl
 
 .PHONY: all en zh dist clean cleanall
