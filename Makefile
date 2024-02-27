@@ -35,6 +35,6 @@ cleanall:
 	for f in $(SRCS); do \
 		latexmk -C $$f; \
 	done
-	rm *.bbl
+	rm *.bbl *.aux *.log *.blg *.out *.pdf
 
 .PHONY: all en zh dist clean cleanall
