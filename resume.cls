@@ -53,7 +53,7 @@
   \RequirePackage{xeCJK}
 }{}
 \RequirePackage{microtype}
-
+% \RequirePackage[sorting=nyt]{biblatex}
 %
 % Hyperref
 %
