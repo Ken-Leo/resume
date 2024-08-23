@@ -1,5 +1,8 @@
 My Resume and LaTeX Template
 ============================
+Log
+------
+Format references by gb7714-2015 for Chinese version.
 
 Introduction
 ------------
