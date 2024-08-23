@@ -8,6 +8,8 @@
 % Chinese version
 \documentclass[zh]{resume}
 % \usepackage{cite}
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+\addbibresource[location=local]{resume-zh.bib}
 % Adjust icon size (default: same size as the text)
 \iconsize{\Large}
 
@@ -149,11 +151,13 @@
 %   \item 发表 2 篇第一作者以及 8 篇合作者 SCI 论文
 % \end{itemize}
 
-\bibliographystyle{IEEEtran}
-{\onehalfspacing\hspace{2em}%
+% \bibliographystyle{IEEEtran}{
+\onehalfspacing\hspace{2em}%
 \nocite{*}
-\bibliography{resume-zh}
-\par}
+% \bibliography{resume-zh}
+\printbibliography[heading=bibliography,title=参考文献]
+\par
+% }
 
 % %======================================================================
 % \sectionTitle{实习经历}{\faBriefcase}
