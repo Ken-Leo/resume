@@ -7,9 +7,24 @@
 
 % Chinese version
 \documentclass[zh]{resume}
-% \usepackage{cite}
-\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+% Format with gb7714-2015 
+\usepackage[backend=biber,style=gb7714-2015,maxnames=12]{biblatex}
 \addbibresource[location=local]{resume-zh.bib}
+
+% Highlight the author and the corresponding author
+\makeatletter
+\renewcommand*{\mkbibnamegiven}[1]{%
+\ifitemannotation{theauthor}
+{\ifbibliography{\textbf{\textbf{#1}}}{#1}}%
+{#1}\ifbibliography{\ifitemannotation{corresponding}{\textsuperscript{*}}{}}{}%
+}
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+\ifitemannotation{theauthor}
+{\ifbibliography{\textbf{\textbf{#1}}}{#1}}
+{#1}}
+\makeatother
+
 % Adjust icon size (default: same size as the text)
 \iconsize{\Large}
 
@@ -151,12 +166,17 @@
 %   \item 发表 2 篇第一作者以及 8 篇合作者 SCI 论文
 % \end{itemize}
 
-% \bibliographystyle{IEEEtran}{
 \onehalfspacing\hspace{2em}%
 \nocite{*}
-% \bibliography{resume-zh}
 \printbibliography[heading=bibliography,title=参考文献]
 \par
+
+%% Format with ieeetrans style
+% \bibliographystyle{IEEEtran}{
+%   \onehalfspacing\hspace{2em}%
+%   \nocite{*}
+%   \bibliography{resume-zh}
+%   \par
 % }
 
 % %======================================================================
