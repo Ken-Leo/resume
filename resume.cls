@@ -180,7 +180,7 @@
 }
 
 \newcommand*{\githublink}[2]{%
-  \href{http://github.com/#1/#2}{\githubSymbol{} #1/#2}%
+  \href{https://github.com/#1/#2}{\githubSymbol{} #1/#2}%
 }
 
 \newcommand*{\link}[2]{\textcolor{linkcolor}{\href{#1}{#2}}}
@@ -407,13 +407,14 @@
 %   {<department>}  % #4
 %   {<major>}       % #5
 %   {<degree>}      % #6
-\NewDocumentCommand{\education}{m o m m m m}{
+%   {<Mentor>} % #7
+\NewDocumentCommand{\education}{m o m m m m m}{
   \ifdef{\@zh}{%
     \IfValueTF{#2}{#2}{现在} & \textbf{#3} \textbullet #4 \\*
-    #1 & #5 \textbullet #6 \\
+    #1 & #5 \textbullet #6 #7\\
   }{%
     \IfValueTF{#2}{#2}{present} & #4, \textbf{#3} \\*
-    #1 & #6 in #5 \\
+    #1 & #6 in #5 #7\\
   }
 }
 
@@ -534,6 +535,13 @@
     \end{tabular}
   \end{minipage}%
 }
+
+%%
+%% Bibliography
+%%
+% The reference formats are defined seperately in English and Chinese .tex files.
+% Here, just ignore it.
+
 
 \endinput
 %% EOF

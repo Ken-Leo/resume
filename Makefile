@@ -18,7 +18,7 @@ $(PDFCAT): $(PDFS)
 
 %.pdf: %.tex $(DEPS)
 	latexmk -xelatex -f $<
-
+	
 dist: all
 	mkdir $(DISTDIR)
 	cp Makefile $(DEPS) $(SRCS) $(PDFS) $(DISTDIR)/
@@ -35,6 +35,6 @@ cleanall:
 	for f in $(SRCS); do \
 		latexmk -C $$f; \
 	done
-	rm *.bbl *.aux *.log *.blg *.out *.pdf
+	rm *.bbl *.aux *.log *.blg *.out *.pdf 
 
 .PHONY: all en zh dist clean cleanall

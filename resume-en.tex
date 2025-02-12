@@ -31,12 +31,31 @@
 % English version
 \documentclass[en]{resume}
 
+%%
+%% Bibliography
+%%
+\usepackage[backend=bibtex,style=ieee,maxnames=20, giveninits=false, uniquename=false]{biblatex} 
+\addbibresource[location=local]{resume-en.bib}
+
+%%
+%% Highlight the author and the corresponding author
+%%
+% Have not found a way to highlight correctly.
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifthenelse{\equal{#1}{Luo\textsuperscript{*}}\OR\equal{#1}{Luo}}{\textbf{#1}}{#1}%
+}
+
+\renewcommand*{\mkbibnamegiven}[1]{%
+\ifthenelse{\equal{#1}{Ke}}{\textbf{#1}}{#1}%
+}
+
 % Adjust icon size (default: same size as the text)
 \iconsize{\Large}
 
 % File information shown at the footer of the last page
 \fileinfo{%
-  \faCopyright{} 2016--2024, Ke Luo@KenLeo \hspace{0.5em}
+  \faCopyright{} 2016--2025, Ke Luo@HUST \hspace{0.5em}
   \creativecommons{by}{4.0} \hspace{0.5em}
   \githublink{Ken-Leo}{resume} \hspace{0.5em}
   \faEdit{} \today
@@ -53,7 +72,8 @@
 
 \profile{
   % \mobile{(+86)131-3567-8223}
-  \email{luoke\_kenleo\#hust\#edu\#cn}
+  % \email{luoke\_kenleo\#hust\#edu\#cn}
+  \email{luoke\_kenleo@hust.edu.cn}
   \github{Ken-Leo} \\
   \degree{Ph.D. in Computer System Architecture}
   \university{Huazhong University of Science and Technology (HUST)}
@@ -63,6 +83,7 @@
   % \icontext{<icon>}{<text>}
   % \iconlink{<icon>}{<link>}{<text>}
 }
+
 
 \begin{document}
 \makeheader
@@ -114,7 +135,8 @@ Passionate about computer science, hiking, and photography.
     {Huazhong University of Science and Technology}%
     {Wuhan National Laboratory for Optoelectronics}%
     {Optical Engineering}%
-    {Postdoc.}
+    {Postdoc.}%
+    {, Mentor: Prof.~Jincai Chen, Prof.~Jingyu Zhang}%
 
   \separator{0.5ex}
   \education%
@@ -123,7 +145,8 @@ Passionate about computer science, hiking, and photography.
     {Huazhong University of Science and Technology}%
     {Wuhan National Laboratory for Optoelectronics}%
     {Computer Architecture}%
-    {Ph.D.}
+    {Ph.D.}%
+    {, Supervisor: Prof.~Jincai Chen}%
 
     \separator{0.5ex}
   \education%
@@ -132,7 +155,8 @@ Passionate about computer science, hiking, and photography.
     {South-Central Minzu University}%
     {College of Electronics and Information}%
     {Electronics and Information Engineering}%
-    {Bechelor}
+    {Bechelor}%
+    {}%
 
 \end{educations}
 
@@ -160,19 +184,53 @@ Passionate about computer science, hiking, and photography.
 \sectionTitle{Research Projects}{\faCode}
 %======================================================================
 \begin{itemize}
-  \item National Natural Science Foundation of China, General Program, No. 62272178, Study of Write Mechanism of Ultra-high Density Three-Dimensional
-  Heat-Assisted Magnetic Recording, 2023/01 $\sim$ 2026/12, Active, Member
+  \item National Natural Science Foundation of China, General Program, No. 62272178, 
+  Study of Write Mechanism of Ultra-high Density Three-Dimensional Heat-Assisted Magnetic Recording, 2023/01 to 2026/12, ongoing, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: 3D magnetic recording medium model, 3D data readback model.
+    \item Main Contributions: Writing the proposal and obtaining funding, 3D magnetic recording read channel modeling, 3D readback signal equalization and detection.
+    \item Impact of Research Achievements: Achieved dual-layer magnetic data recording to ensure the reliability of 3D magnetic data reading, doubling the storage density, providing theoretical foundation and technical support for ultra-high-density 3D magnetic storage.
+  \end{itemize}
+
   \item National Natural Science Foundation of China, General Program, No. 61672246, Key Technologies of Read Heads Array and The Recording System for
-  Two-Dimensional Magnetic Recording at Ultra-high Density, 2017/01 $\sim$ 2020/12, Finished, Member
-  \item National Natural Science Foundation of China, General Program, No. 61272068, Key Technologies of Ultra-high Density Shingled Magnetic Recording on Bit Patterned Media, 2013/01 $\sim$ 2016/12, Finished, Member
-  \item Enterprise Cooperation Project, PRML algorithms and techniques for multi-layer Blu-ray discs, 2024/07 $\sim$ 2025/01, Active, Member 
-  \item Enterprise Cooperation Project, BDXL Standard Based PRML Model Design and Implementation, 2022/08 $\sim$ 2023/06, Finished, Member
-  \item Enterprise Cooperation Project, HDD Prototype Algorithms and Innovative Magnetic Record Technology, 2022/03 $\sim$ 2023/03, Finished, Member 
+  Two-Dimensional Magnetic Recording at Ultra-high Densities, 2017/01 to 2020/12, completed, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: 2D magnetic recording medium model, 2D data readback model.
+    \item Main Contributions: Conducted modeling of 2D magnetic recording media, read/write processes, and readback signal processing. Designed a method for generating a 2D Voronoi medium particle model and analyzed write errors under different medium and recording bit size parameters.
+    \item Impact of Research Achievements: Proposed an index for selecting the 2D readback response interval that balances accuracy and computational overhead. Built a system structure for 2D magnetic recording writing, readback, and data recovery channels. Proposed methods such as block equalization detection based on neural networks and constraint-controlled coding methods to limit continuous magnetization transitions, providing theoretical foundation and technical support for ultra-low-density magnetic storage.
+  \end{itemize}
+
+  \item National Natural Science Foundation of China, General Program, No. 61272068, Key Technologies of Ultra-high Density Shingled Magnetic Recording on Bit Patterned Media, 2013/01 to 2016/12, completed, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: Bit-patterned magnetic recording medium model, bit-patterned data readback model.
+    \item Main Contributions: Modeling of bit-patterned magnetic recording read channels, study of recording bit arrangement, and readback signal simulation analysis.
+    \item Impact of Research Achievements: Proposed a bit-pattern-based magnetic recording medium model, achieved modeling of the magnetic recording read channel based on this model, and performed write error analysis under different recording bit arrangements, providing theoretical foundation and technical support for ultra-low-density magnetic storage.
+  \end{itemize}
   
+  \item Corporate Collaboration, PRML Algorithms and Techniques for Multi-layer Blu-ray Discs Cooperation Project, 2024/07 to 2025/02, ongoing, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: Multi-layer blue-ray disc PRML signal processing algorithm and simulation model based on an independent guiding layer.
+    \item Main Contributions: Research on multi-layer disc PRML models and signal quality assessment methods.
+    \item Impact of Research Achievements: Achieved RF signal sample detection for 300GB-500GB multi-layer blue-ray discs, meeting commercial requirements, providing technical support for the domestic production of ultra-large capacity optical discs.
+  \end{itemize}
+
+  \item Corporate Collaboration, PRML Model Design and Implementation Based on BDXL Standard, 2022/08 to 2023/06, completed, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: PRML detector design for blue-ray discs based on the BDXL standard.
+    \item Main Contributions: Completed algorithm design for a PRML simulation model of blue-ray storage based on the BDXL standard.
+    \item Impact of Research Achievements: The designed PRML channel solution was tested in commercial optical discs, achieving detection results at the international advanced level.
+  \end{itemize}
+
+  \item Corporate Collaboration, HDD Prototype Algorithms and Advanced Magnetic Recording Technology Cooperation Project, 2022/03 to 2023/03, completed, participant
+  \begin{itemize}
+    \item Research Achievements and Innovations: Micromagnetic simulation analysis and modeling of magnetic recording systems, advanced magnetic recording system algorithm design and simulation.
+    \item Main Contributions: Conducted research on HDD-related technologies, algorithms, and literature based on PMR/TDMR, optimized algorithms for PMR and TDMR, and developed, designed, and optimized key technologies related to magnetic heads, storage density, reliability, equalization, detection, and encoding/decoding.
+    \item Impact of Research Achievements: Based on PMR+TDMR magnetic recording technology, provided prototype/commercially viable HDD algorithms with competitive performance in the industry, as well as floating-point algorithm simulation code development, supporting prototype system development and verification.
+  \end{itemize}
 \end{itemize}
 
 %======================================================================
-\sectionTitle{Research Achievements}{\faAtom}
+% \sectionTitle{Research Achievements}{\faAtom}
 %======================================================================
 % \begin{itemize}
 %   \item Developed the low-frequency radio sky image simulation software:
@@ -193,11 +251,22 @@ Passionate about computer science, hiking, and photography.
 % \end{itemize}
 
 
-\bibliographystyle{IEEEtran}
-{\onehalfspacing\hspace{2em}%
+%======================================================================
+\sectionTitle{Publications and Patents}{\faAtom}
+%======================================================================
+% \begin{refsection}
+% \bibliographystyle{IEEEtran}
+% {\onehalfspacing\hspace{2em}%
+% \nocite{*}
+% \bibliography{resume-en}
+% \par}
+% \end{refsection}
+
+% \onehalfspacing\hspace{2em}%
 \nocite{*}
-\bibliography{resume-en}
-\par}
+\printbibliography[heading={none}]
+% \printbibliography[heading=bibliography,title=Publications]
+% \par
 
 
 % %======================================================================
