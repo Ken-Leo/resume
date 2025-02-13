@@ -149,7 +149,7 @@
 \ifdef{\@zh}{
   \linespread{1.25}
 }{
-  \linespread{1.15}
+  \linespread{1.25}
 }
 
 % Setup resume sections
