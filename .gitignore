@@ -17,6 +17,6 @@ dist/
 *.bcf
 *.run.xml
 *.synctex.gz
-*.DS_Store
 .qodo
 ._*
+.DS_Store
