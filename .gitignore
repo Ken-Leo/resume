@@ -1,0 +1,22 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+auto/
+photos/
+photo.*
+submitted/
+dist/
+*.tar.bz2
+# resume-en.pdf
+# resume-zh.pdf
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.synctex.gz
+.qodo
+._*
+.DS_Store
