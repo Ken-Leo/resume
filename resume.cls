@@ -95,7 +95,13 @@
 % Chinese setup
 \ifdef{\@zh}{
   \setCJKmainfont{Noto Serif CJK SC}
-  \setCJKmonofont{Noto Sans Mono CJK SC}
+  % Noto Sans Mono CJK SC is absent on some setups; keep the build working by
+  % falling back to the serif face, which is the one these resumes actually use.
+  \IfFontExistsTF{Noto Sans Mono CJK SC}{
+    \setCJKmonofont{Noto Sans Mono CJK SC}
+  }{
+    \setCJKmonofont{Noto Serif CJK SC}
+  }
   % Redefine '\emph' to bold style
   % Credit: https://tex.stackexchange.com/a/227644
   \let\emph\relax  % there's no \RedeclareTextFontCommand
