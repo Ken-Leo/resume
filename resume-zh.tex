@@ -13,16 +13,26 @@
 
 % Highlight the author and the corresponding author
 \makeatletter
+% A biblatex name annotation can only hold one value per name, so the combined
+% token "theauthor-corresponding" marks the author who is also a corresponding
+% author; writing "1=theauthor;1=corresponding" makes the second one win and
+% silently drops the bold.
+\newcommand*{\resumeIfAuthor}[2]{%
+  \ifitemannotation{theauthor}{#1}%
+    {\ifitemannotation{theauthor-corresponding}{#1}{#2}}%
+}
+\newcommand*{\resumeIfCorresponding}[2]{%
+  \ifitemannotation{corresponding}{#1}%
+    {\ifitemannotation{theauthor-corresponding}{#1}{#2}}%
+}
+
 \renewcommand*{\mkbibnamegiven}[1]{%
-\ifitemannotation{theauthor}
-{\ifbibliography{\textbf{\textbf{#1}}}{#1}}%
-{#1}\ifbibliography{\ifitemannotation{corresponding}{\textsuperscript{*}}{}}{}%
+  \resumeIfAuthor{\ifbibliography{\textbf{#1}}{#1}}{#1}%
+  \ifbibliography{\resumeIfCorresponding{\textsuperscript{*}}{}}{}%
 }
 
 \renewcommand*{\mkbibnamefamily}[1]{%
-\ifitemannotation{theauthor}
-{\ifbibliography{\textbf{\textbf{#1}}}{#1}}
-{#1}
+  \resumeIfAuthor{\ifbibliography{\textbf{#1}}{#1}}{#1}%
 }
 \makeatother
 
@@ -46,7 +56,7 @@
 % \tagline{\icon{\faBinoculars}} <position-to-look-for>}
 % \tagline{<current-position>}
 
-\photo{6.5em}{./selfie.jpg}
+\photo{7em}{./selfie.jpg}
 
 \profile{
   % \mobile{(+86)131-3567-8223}
@@ -149,62 +159,62 @@
 \sectionTitle{科研项目}{\faCode}
 %======================================================================
 \begin{itemize}
-  \item 湖北省自然科学基金青年科学基金项目（B类），2026AFB157, 面向超高密度存储的三维磁记录关键技术研究，2026/03至2028/03，在研，主持
+  \item \textbf{湖北省自然科学基金青年科学基金项目（B类）}，2026AFB157, 面向超高密度存储的三维磁记录关键技术研究，2026/03至2028/03，在研，\textbf{主持}
   \begin{itemize}
     \item 研究成果与创新点：创新三维数据写入机制，为突破磁存储密度瓶颈提供新理论与技术支撑。
     \item 主要贡献： 研究纳米尺度光热场的精准生成与调控、多层介质中热磁耦合与磁化状态定向翻转机理，以及三维存储状态空间的构建与智能恢复方法。
   \end{itemize}
 
-  \item 国家自然科学基金，面上项目，62272178, 超高密度三维热辅助磁记录写机制研究，2023/01至2026/12，在研，参与
+  \item \textbf{国家自然科学基金，面上项目}，62272178, 超高密度三维热辅助磁记录写机制研究，2023/01至2026/12，在研，参与
   \begin{itemize}
     \item 研究成果与创新点：三维磁记录介质模型，三维记录数据回读模型。
     \item 主要贡献： 申请书的撰写并获得资助，三维磁记录读通道建模，三维回读信号均衡检测。
     \item 研究成果影响：实现双层磁数据记录保障三维磁记录数据读取可靠性以达到存储密度倍增，为超高密度磁存储提供理论基础和技术支持。
   \end{itemize}
 
-  \item 国家自然科学基金，面上项目，61672246，超高密度二维磁记录读磁头阵列及其记录系统关键技术研究，2017/01至2020/12，已结题，参与
+  \item \textbf{国家自然科学基金，面上项目}，61672246，超高密度二维磁记录读磁头阵列及其记录系统关键技术研究，2017/01至2020/12，已结题，参与
   \begin{itemize}
     \item 研究成果与创新点：二维磁记录介质模型，二维记录数据回读模型。
     \item 主要贡献：开展二维磁记录介质建模、读写过程建模及回读信号处理，设计了二维 Voronoi 介质颗粒模型的生成方法，进行了不同介质及记录位尺寸参数下的写错误分析。
     \item 研究成果影响：提出了平衡准确性和计算开销的二维回读响应区间的选取指标，搭建了二维磁记录写入、回读和数据恢复信道的系统结构，提出了基于神经网络的块均衡检测方法、限制连续磁化跃迁的约束控制编码方法等，有效提高了磁存储系统的可靠性，对大幅提升磁存储密度和容量具有重要的理论指导意义与应用价值。
   \end{itemize}
 
-  \item 国家自然科学基金，面上项目，61272068，比特图案介质的超高密度瓦记录关键技术研究，2013/01-2016/12，已结题，参与
+  \item \textbf{国家自然科学基金，面上项目}，61272068，比特图案介质的超高密度瓦记录关键技术研究，2013/01-2016/12，已结题，参与
   \begin{itemize}
     \item 研究成果与创新点：比特图案磁记录介质模型，比特图案记录数据回读模型。
     \item 主要贡献：比特图案磁记录读通道建模，记录位排列方式研究，回读信号仿真分析等。
     \item 研究成果影响：提出了一种基于比特图案的磁记录介质模型，实现了基于该模型的磁记录读通道建模，为比特图案介质的瓦记录技术提供理论基础和技术支持。
   \end{itemize}
 
-  \item 企业横向，二维磁记录技术合作项目，2025/11至2026/11，在研，主持
+  \item 企业横向，二维磁记录技术合作项目，2025/11至2026/11，在研，\textbf{主持}
   \begin{itemize}
     \item 研究成果与创新点：适配磁带的磁感应元件的设计仿真、2D信号处理方案、密度提升潜力评估等，探索二维磁记录等高密技术在磁带介质上的密度收益和落地可行性。 
     \item 主要贡献：梳理磁记录演进方向，建立磁传递函数模型，构建磁信号仿真系统。
     \item 研究成果影响：实现从磁头、磁带的基础物理参数到磁记录系统信道响应的表征模型，完成从物理参数到原始误码率RBER的全流程仿真。
   \end{itemize}
   
-  \item 企业横向，高密度HAMR信号处理技术合作项目，2025/08至2026/06，结题，主持
+  \item \textbf{企业横向}，高密度HAMR信号处理技术合作项目，2025/08至2026/06，已结题，\textbf{主持}
   \begin{itemize}
     \item 研究成果与创新点：本项目通过开发更高效和准确的信号处理技术，解决回读信号的轨道间串扰加剧问题。
     \item 主要贡献：建立包含写入数据、信号回读、信号处理的全流程仿真模型；基于自研硬盘验证系统测试回读信号处理算法。
     \item 研究成果影响：结合模型仿真和验证系统测试，优化写入方式、读头设计等，开发高面密度HAMR回读信号处理技术。
   \end{itemize}
 
-  \item 企业横向，面向蓝光超多层PRML算法技术合作项目，2024/07至2025/02，在研，参与
+  \item \textbf{企业横向}，面向蓝光超多层PRML算法技术合作项目，2024/07至2025/02，已结题，参与
   \begin{itemize}
     \item 研究成果与创新点：基于独立引导层的多层蓝光光盘PRML信号处理算法与仿真模型。
     \item 主要贡献：多层光盘PRML模型研究及信号质量评估方法研究。
     \item 研究成果影响：300GB-500GB多层蓝光光盘实现RF信号样本的检测，达到商用要求，为超大容量光盘的国产化提供技术支持。
   \end{itemize}
 
-  \item 企业横向，基于BDXL标准的PRML模型设计与实现合作项目，2022/08至2023/06，已结题，参与
+  \item \textbf{企业横向}，基于BDXL标准的PRML模型设计与实现合作项目，2022/08至2023/06，已结题，参与
   \begin{itemize}
     \item 研究成果与创新点：蓝光光盘BDXL标准的PRML检测器设计。
     \item 主要贡献：完成一套基于BDXL标准的蓝光存储PRML仿真模型的算法设计。
     \item 研究成果影响：所设计的PRML通道方案在商用光盘中测试通过，检测效果达到国际同类先进水平。
   \end{itemize}
 
-  \item 企业横向，HDD 原型算法和先进磁记录技术合作项目，2022/03至2023/03，已结题，参与
+  \item \textbf{企业横向}，HDD 原型算法和先进磁记录技术合作项目，2022/03至2023/03，已结题，参与
   \begin{itemize}
     \item 研究成果与创新点：磁记录系统微磁学仿真分析及建模，先进磁记录系统算法设计和仿真。
     \item 主要贡献：开展基于PMR/TDMR的HDD相关技术、算法和文献调研，进行PMR、TDMR优化算法选型研究，开展磁头、存储密度、可靠性、均衡、检测、编译码等方面关键技术的开发、设计和优化。
